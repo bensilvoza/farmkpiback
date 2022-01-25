@@ -41,6 +41,15 @@ router.post("/register/update", async function (req, res) {
   res.json("Registered");
 });
 
+// administrator side edit
+router.post("/register/edit/:userId", async function (req, res) {
+  var updatedUser = await Register.findByIdAndUpdate(
+    req.params.userId,
+    req.body
+  );
+  res.json("Updated");
+});
+
 router.get("/register/:userId", async function (req, res) {
   var data = await Register.findById(req.params.userId);
   res.json(data);
