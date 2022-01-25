@@ -45,6 +45,7 @@ router.get("/register/:userId", async function (req, res) {
   console.log("reg/:userId");
   var data = await Register.findById(req.params.userId);
   console.log(data);
+  console.log("test");
   res.json(data);
 });
 
