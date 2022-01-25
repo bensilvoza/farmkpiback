@@ -27,11 +27,6 @@ router.post("/register", async function (req, res) {
   res.json("Data Added");
 });
 
-router.get("/register/:userId", async function (req, res) {
-  var data = await Register.findById(req.params.userId);
-  res.json(data);
-});
-
 // update account
 router.post("/register/update", async function (req, res) {
   //var updatedData = {fname:req.body.fname, lname:req.body.lname, role:req.body.role, email:req.body.email, password:req.body.password}
@@ -44,6 +39,13 @@ router.post("/register/update", async function (req, res) {
   var check = await Register.findByIdAndUpdate(data["_id"], data);
   console.log(check);
   res.json("Registered");
+});
+
+router.get("/register/:userId", async function (req, res) {
+  console.log("reg/:userId");
+  var data = await Register.findById(req.params.userId);
+  console.log(data);
+  res.json(data);
 });
 
 // logout
